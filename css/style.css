@@ -1,0 +1,409 @@
+/* Variables & Global Styles */
+:root {
+    --bg-dark: #12121a; /* Very dark blue/purple */
+    --bg-dark-alt: #1c1c27; /* Slightly lighter for cards/sections */
+    --accent-primary: #DA00FF; /* Magenta */
+    --accent-secondary: #7B2DFF; /* Vibrant Purple */
+    --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    --text-light: #e0e0e0;
+    --text-headings: #ffffff;
+    --text-muted: #888899;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+    --border-radius-sm: 0.3rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.8rem;
+    --accent-secondary-rgb: 123, 45, 255; /* for the rgba() if used by hero-bg-shape */
+    --accent-primary-rgb: 218,0,255; /* for button shadows etc. */
+}
+
+html {
+    scroll-behavior: smooth; /* Ensures smooth scrolling for anchor links by default */
+    scroll-padding-top: 80px; /* Default navbar height - same as body padding-top */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-secondary);
+    line-height: 1.7;
+    padding-top: 80px; /* This MUST match scroll-padding-top for desktop. Navbar height */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    color: var(--text-headings);
+    font-weight: 700;
+}
+
+.section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-bg-alt {
+    background-color: var(--bg-dark-alt);
+}
+
+.accent-text {
+    color: var(--accent-primary);
+}
+.accent-text-animated {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-flow 5s ease infinite;
+}
+@keyframes gradient-flow {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.accent-text-link {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.accent-text-link:hover {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+}
+
+.accent-icon {
+    color: var(--accent-primary);
+}
+
+.muted-text {
+    color: var(--text-muted) !important;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.subheading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-headings);
+    margin-bottom: 1rem;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(18, 18, 26, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.navbar.scrolled {
+    background-color: var(--bg-dark);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.navbar-brand {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.navbar-brand .accent-text {
+    font-weight: 800;
+}
+.nav-link {
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    color: var(--text-light) !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0.5rem 0.8rem !important;
+    border-radius: var(--border-radius-sm);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--text-headings) !important;
+    background-color: rgba(255,255,255,0.05);
+}
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28224, 224, 224, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 90vh;
+    /* Fallback color if image doesn't load */
+    background-color: var(--bg-dark);
+    /* Added background image with overlay */
+    background-image: linear-gradient(rgba(18, 18, 26, 0.75), rgba(18, 18, 26, 0.9)), url('../img/taj.jpg'); /* CORRECTED PATH */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden; /* Good to keep if you ever add other positioned elements */
+    padding-top: 100px; /* Adjust according to your final navbar height and design */
+    padding-bottom: 60px;
+    /* The d-flex, align-items-center, text-center classes on the <header> tag in HTML will handle text centering */
+}
+
+.hero-title {
+    color: var(--text-headings);
+    font-size: 3rem;
+}
+.hero-subtitle {
+    color: var(--text-light); /* Already set by .hero-section color, but explicit is fine */
+}
+/* hero-detail class was commented out in HTML, but if you use it: */
+/* .hero-detail { color: var(--text-muted); font-weight: 400; } */
+
+
+/* If you decide to use hero-bg-shape again, its styles are here */
+/* .hero-bg-shape {
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(var(--accent-secondary-rgb), 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(50px);
+    pointer-events: none;
+    transform: scale(1.5);
+    animation: pulse-shape 10s infinite alternate ease-in-out;
+}
+@keyframes pulse-shape {
+    0% { transform: scale(1.3) rotate(0deg); opacity: 0.5; }
+    50% { transform: scale(1.6) rotate(15deg); opacity: 0.8; }
+    100% { transform: scale(1.3) rotate(0deg); opacity: 0.5; }
+} */
+
+
+/* Adjust title for smaller screens */
+@media (min-width: 768px) {
+    .hero-title { font-size: 4.5rem; }
+}
+@media (min-width: 992px) {
+    .hero-title { font-size: 5.5rem; }
+    .hero-section { min-height: 100vh; } /* Full viewport height on larger screens */
+}
+
+/* Buttons */
+.btn {
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border-width: 2px;
+}
+
+.btn-primary-gradient {
+    background: var(--accent-gradient);
+    border: none;
+    color: white;
+    box-shadow: 0 5px 15px rgba(var(--accent-primary-rgb), 0.3);
+}
+.btn-primary-gradient:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(var(--accent-primary-rgb), 0.4);
+}
+
+.btn-outline-accent {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+.btn-outline-accent:hover {
+    background-color: var(--accent-primary);
+    color: var(--text-headings);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(var(--accent-primary-rgb), 0.5);
+}
+
+/* Date Cards */
+.date-card {
+    background-color: var(--bg-dark);
+    padding: 2rem 1.5rem;
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 100%;
+}
+.date-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(var(--accent-secondary-rgb), 0.2);
+    border-color: var(--accent-secondary);
+}
+.date-card-icon {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+.date-card:hover .date-card-icon {
+    transform: scale(1.1);
+}
+.date-card-title {
+    font-size: 1.2rem;
+    color: var(--text-headings);
+    margin-bottom: 0.5rem;
+}
+.date-card-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* CFP Topic Badges */
+.topic-badge {
+    display: inline-block;
+    background-color: rgba(var(--accent-secondary-rgb), 0.15);
+    color: var(--accent-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    margin: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(var(--accent-secondary-rgb), 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.topic-badge:hover {
+    background-color: var(--accent-secondary);
+    color: white;
+}
+
+/* Speaker Card */
+.speaker-card {
+    background-color: var(--bg-dark);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 1px solid transparent;
+}
+.speaker-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 35px rgba(var(--accent-primary-rgb),0.15);
+    border-color: rgba(var(--accent-primary-rgb), 0.3);
+}
+.speaker-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.speaker-card:hover .speaker-img {
+    transform: scale(1.05);
+}
+.speaker-info {
+    padding: 1.5rem;
+}
+.speaker-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-headings);
+}
+.speaker-affiliation {
+    font-size: 0.9rem;
+}
+
+/* Sponsor Logos */
+.sponsor-logo {
+    max-height: 100px; /* Adjusted as per earlier request - review this value */
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+    /* Filter changed for better visibility if original logos are varied */
+    filter: grayscale(10%) contrast(1) brightness(1.1); /* Less aggressive filter */
+    opacity: 0.85; /* Slightly more opaque */
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    padding: 5px;
+}
+.sponsor-logo:hover {
+    filter: grayscale(0%) contrast(1) brightness(1);
+    opacity: 1;
+    transform: scale(1.1); /* Reduced hover scale slightly */
+}
+
+/* Social Icons Contact */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.social-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.social-icon-btn:hover {
+    background: var(--accent-gradient);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.footer-section {
+    background-color: var(--bg-dark-alt);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-muted);
+}
+.footer-section p {
+    margin-bottom: 0.2rem;
+}
+.footer-section .muted-text {
+    font-size: 0.85rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    html {
+        scroll-padding-top: 70px; /* Navbar height for mobile - same as body padding-top on mobile */
+    }
+    body {
+        padding-top: 70px; /* Smaller navbar height on mobile. MUST match html scroll-padding-top */
+    }
+    .section-padding {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .subheading {
+        font-size: 1.5rem;
+    }
+    .hero-title {
+        font-size: 2.5rem !important; /* !important is generally okay in media queries if overriding specific utility classes */
+    }
+    .hero-section { /* Adjust hero padding for mobile */
+        padding-top: 80px; /* This padding is within the hero, below the fixed navbar */
+        padding-bottom: 40px;
+    }
+    .nav-link {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
