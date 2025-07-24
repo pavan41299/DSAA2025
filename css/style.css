@@ -1,13 +1,13 @@
 /* Variables & Global Styles */
 :root {
-    --bg-dark: #12121a; /* Very dark blue/purple */
-    --bg-dark-alt: #1c1c27; /* Slightly lighter for cards/sections */
+    --bg-dark: #fefefe; /* Very dark blue/purple */
+    --bg-dark-alt: #e7e7f0; /* Slightly lighter for cards/sections */
     --accent-primary: #DA00FF; /* Magenta */
     --accent-secondary: #7B2DFF; /* Vibrant Purple */
     --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-    --text-light: #e0e0e0;
-    --text-headings: #ffffff;
-    --text-muted: #888899;
+    --text-light: #000000;
+    --text-headings: #150101;
+    --text-muted: #3b3b42;
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Inter', sans-serif;
     --border-radius-sm: 0.3rem;
